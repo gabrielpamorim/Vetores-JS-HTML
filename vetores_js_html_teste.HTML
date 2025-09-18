@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manipulação de Vetor em JavaScript</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+        }
+        input, button {
+            padding: 8px;
+            margin: 5px;
+        }
+        #resultado {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Divisão de Números com Vetor</h1>
+
+    <p>Por favor, insira dois números inteiros positivos:</p>
+    
+    <input type="number" id="numero1" placeholder="Primeiro número">
+    <input type="number" id="numero2" placeholder="Segundo número">
+    
+    <button onclick="processarNumeros()">Calcular</button>
+
+    <div id="resultado"></div>
+
+    <script>
+        // Função para processar os números e exibir o resultado
+        function processarNumeros() {
+            // Obter os valores dos campos de entrada
+            let input1 = document.getElementById('numero1').value;
+            let input2 = document.getElementById('numero2').value;
+
+            // Converter os valores para inteiros
+            let numero1 = parseInt(input1);
+            let numero2 = parseInt(input2);
+
+            let resultadoDiv = document.getElementById('resultado');
+
+            // Verificar se os números são inteiros positivos
+            if (!Number.isInteger(numero1) || numero1 <= 0 || !Number.isInteger(numero2) || numero2 <= 0) {
+                resultadoDiv.textContent = "Erro: Por favor, insira apenas números inteiros positivos.";
+                return; // Sai da função se a validação falhar
+            }
+            
+            // Usar um vetor para armazenar os números
+            let vetorDeNumeros = [numero1, numero2];
+            
+            // Verificar se o segundo número é zero antes de dividir
+            if (vetorDeNumeros[1] === 0) {
+                resultadoDiv.textContent = "Erro: Não é possível dividir por zero.";
+            } else {
+                // Realizar a divisão
+                let resultado = vetorDeNumeros[0] / vetorDeNumeros[1];
+                resultadoDiv.textContent = `A divisão de ${vetorDeNumeros[0]} por ${vetorDeNumeros[1]} é: ${resultado}`;
+            }
+        }
+    </script>
+
+</body>
+</html>
